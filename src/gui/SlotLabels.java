@@ -26,7 +26,7 @@ public class SlotLabels extends GridPanel implements Observer {
                 labelList.add(label);
             }
         }
-        SlotLabel firstLabel = labelList.get(0);
+        SlotLabel firstLabel = labelList.get(75);
         firstLabel.setBackground(Color.YELLOW);
     }
 
