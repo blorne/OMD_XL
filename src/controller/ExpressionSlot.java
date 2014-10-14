@@ -1,13 +1,21 @@
 package controller;
 
 import expr.Environment;
+import expr.Expr;
 
 public class ExpressionSlot implements Slot {
-
+	private Expr expr;
+	
+	public ExpressionSlot(Expr expr){
+		this.expr = expr;
+	}
+	
 	@Override
 	public double value(Environment e) {
-		// TODO Auto-generated method stub
-		return 0;
+		return expr.value(e);
 	}
-
+	
+	public String toString(){
+		return expr.toString();
+	}
 }

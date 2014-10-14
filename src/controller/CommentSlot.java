@@ -3,11 +3,18 @@ package controller;
 import expr.Environment;
 
 public class CommentSlot implements Slot{
+private String comment;
 
-	@Override
+	public CommentSlot(String comment){
+		this.comment = comment;
+	}
+
 	public double value(Environment e) {
-		// TODO Auto-generated method stub
 		return 0;
+	}
+	
+	public String toString(){
+		return comment;
 	}
 
 }

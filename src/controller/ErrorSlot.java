@@ -1,11 +1,14 @@
 package controller;
 
 import expr.Environment;
+import expr.Expr;
 import util.XLException;
 
 public class ErrorSlot implements Slot {
 
-	@Override
+	public ErrorSlot(){
+	}
+	
 	public double value(Environment e) {
 		throw new XLException("Error");
 	}
