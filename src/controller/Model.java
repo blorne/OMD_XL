@@ -23,12 +23,20 @@ public class Model extends Observable implements Environment {
 		return s.value(this);
 	}
 	
-	public String toString(String name){
+	public String expressionString(String name){
 		Slot s= map.get(name);
 		if(s==null){
 			return "";
 		}
-		return s.toString();
+		return s.expressionString();
+	}
+	
+	public String valueString(String name){
+		Slot s= map.get(name);
+		if(s==null){
+			return "";
+		}
+		return s.valueString(this);
 	}
 	
 	
