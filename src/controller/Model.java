@@ -10,16 +10,18 @@ import expr.Environment;
 
 public class Model extends Observable implements Environment {
 	private Map<String, Slot> map;
+	private SlotSelector slotSelect;
 	
 	public Model(){
 		this.map = new HashMap<String, Slot>();
+		slotSelect = new SlotSelector();
 	}
 	
 	public double value(String name) {
-	Slot s= map.get(name);
-	if(s==null){
-		throw new XLException("Cannot refer to an empty slot");
-	}
+		Slot s= map.get(name);
+		if(s==null){
+			throw new XLException("Cannot refer to an empty slot ("+name+")");
+		}
 		return s.value(this);
 	}
 	
@@ -40,8 +42,26 @@ public class Model extends Observable implements Environment {
 	}
 	
 	
-	public void execute(String s, Observer o) {
-		
+	public void fillSlot(String name, String input) {
+		updateModel();
 	}
 	
+	public void circularCheck(String name, Slot slot){
+		
+		Slot temp = map.get(name);
+		ErrorSlot circularity = new ErrorSlot();
+		map.put(name, circularity);
+		try {
+			slot.value(this);
+		} finally {
+			map.put(name, temp);
+		}
+
+	}
+	
+	private void updateModel(){
+		setChanged();
+		notifyObservers();
+	}
+
 }

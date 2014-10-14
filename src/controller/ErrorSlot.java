@@ -4,22 +4,22 @@ import expr.Environment;
 import expr.Expr;
 import util.XLException;
 
-public class CircularError implements Slot {
+public class ErrorSlot implements Slot {
 
-	public CircularError(){
+	public ErrorSlot(){
 	}
 	
 	public double value(Environment e) {
-		throw new XLException("Error");
+		throw new XLException("Circular Error");
 	}
 	
 	public String expressionString(){
-		throw new XLException("Error");
+		throw new XLException("Circular Error");
 	}
 
 	@Override
 	public String valueString(Environment e) {
-		throw new XLException("Error");
+		throw new XLException("Circular Error");
 	}
 
 }
