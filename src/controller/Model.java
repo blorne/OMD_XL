@@ -43,10 +43,12 @@ public class Model extends Observable implements Environment {
 	
 	
 	public void fillSlot(String name, String input) {
+		Slot slot = slotSelect.build(input);
+		circularCheck(name, slot);
 		updateModel();
 	}
 	
-	public void circularCheck(String name, Slot slot){
+	private void circularCheck(String name, Slot slot){
 		
 		Slot temp = map.get(name);
 		ErrorSlot circularity = new ErrorSlot();
