@@ -4,9 +4,9 @@ import expr.Environment;
 import expr.Expr;
 import util.XLException;
 
-public class ErrorSlot implements Slot {
+public class CircularError implements Slot {
 
-	public ErrorSlot(){
+	public CircularError(){
 	}
 	
 	public double value(Environment e) {
