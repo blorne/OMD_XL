@@ -13,8 +13,14 @@ private String comment;
 		return 0;
 	}
 	
-	public String toString(){
+	public String expressionString(){
 		return comment;
+	}
+
+	@Override
+	public String valueString(Environment e) {
+		return comment;
+		
 	}
 
 }

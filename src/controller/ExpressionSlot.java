@@ -15,7 +15,12 @@ public class ExpressionSlot implements Slot {
 		return expr.value(e);
 	}
 	
-	public String toString(){
+	public String expressionString(){
 		return expr.toString();
+	}
+
+	@Override
+	public String valueString(Environment e) {
+		return String.valueOf(expr.value(e));
 	}
 }

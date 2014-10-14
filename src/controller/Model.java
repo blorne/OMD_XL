@@ -3,6 +3,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
+import util.*;
 
 
 import expr.Environment;
@@ -15,10 +16,24 @@ public class Model extends Observable implements Environment {
 	}
 	
 	public double value(String name) {
-		return 0;
+	Slot s= map.get(name);
+	if(s==null){
+		throw new XLException("Cannot refer to an empty slot");
 	}
+		return s.value(this);
+	}
+	
+	public String toString(String name){
+		Slot s= map.get(name);
+		if(s==null){
+			return "";
+		}
+		return s.toString();
+	}
+	
 	
 	public void execute(String s, Observer o) {
 		
 	}
+	
 }

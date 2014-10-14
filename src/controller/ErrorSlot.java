@@ -13,7 +13,12 @@ public class ErrorSlot implements Slot {
 		throw new XLException("Error");
 	}
 	
-	public String toString(){
+	public String expressionString(){
+		throw new XLException("Error");
+	}
+
+	@Override
+	public String valueString(Environment e) {
 		throw new XLException("Error");
 	}
 
