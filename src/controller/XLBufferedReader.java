@@ -13,8 +13,8 @@ public class XLBufferedReader extends BufferedReader {
         super(new FileReader(name));
     }
 
-    // TODO Change Object to something appropriate
-    public void load(Map<String, Object> map) {
+
+    public void load(Map<String, Slot> map) {
         try {
             while (ready()) {
                 String string = readLine();
