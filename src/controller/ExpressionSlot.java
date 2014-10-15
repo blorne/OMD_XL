@@ -15,7 +15,7 @@ public class ExpressionSlot implements Slot {
 		return expr.value(e);
 	}
 	
-	public String expressionString(){
+	public String toString(){
 		return expr.toString();
 	}
 

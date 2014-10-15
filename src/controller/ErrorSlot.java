@@ -13,7 +13,7 @@ public class ErrorSlot implements Slot {
 		throw new XLException("Circular Error");
 	}
 	
-	public String expressionString(){
+	public String toString(){
 		throw new XLException("Circular Error");
 	}
 

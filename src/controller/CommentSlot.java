@@ -13,7 +13,7 @@ private String comment;
 		return 0;
 	}
 	
-	public String expressionString(){
+	public String toString(){
 		return comment;
 	}
 

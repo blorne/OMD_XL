@@ -29,12 +29,12 @@ public class Model extends Observable implements Environment {
 		return s.value(this);
 	}
 	
-	public String expressionString(String name){
+	public String toString(String name){
 		Slot s= map.get(name);
 		if(s==null){
 			return "";
 		}
-		return s.expressionString();
+		return s.toString();
 	}
 	
 	public String valueString(String name){
@@ -110,7 +110,7 @@ public class Model extends Observable implements Environment {
 	public void load(String path) throws IOException {
 		XLBufferedReader reader = new XLBufferedReader(path);
 		removeAll();
-		reader.load(map);
+		reader.load(map,this);
 		updateModel();
 		reader.close();
 	}

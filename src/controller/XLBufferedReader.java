@@ -14,13 +14,13 @@ public class XLBufferedReader extends BufferedReader {
     }
 
 
-    public void load(Map<String, Slot> map) {
+    public void load(Map<String, Slot> map, Model m) {
         try {
             while (ready()) {
                 String string = readLine();
                 int i = string.indexOf('=');
-                // TODO
-            }
+            	m.add(string.substring(0,i), string.substring(i+1));
+            }	
         } catch (Exception e) {
             throw new XLException(e.getMessage());
         }
