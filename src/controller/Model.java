@@ -71,14 +71,18 @@ public class Model extends Observable implements Environment {
 	public void remove(String name) {
 		if (map.containsKey(name)){
 			Slot temp = map.remove(name);
-			if(!mapCheck()){;
-			map.put(name, temp);
-			}
+			try {
+				mapCheck();
+			} catch (XLException e) {
+				map.put(name, temp);
+				throw e;
+			}finally{
 			updateModel();
+			}		
 		}
 	}
 		
-	private boolean mapCheck() throws XLException {
+	private void mapCheck() throws XLException {
 		Set<String> keys = map.keySet();
 		Iterator<String> itr = keys.iterator();
 		while (itr.hasNext()) {
@@ -89,7 +93,6 @@ public class Model extends Observable implements Environment {
 				throw e;
 			}
 		}
-		return true;
 	}	
 	
 	public void removeAll(){
