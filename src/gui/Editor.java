@@ -19,6 +19,7 @@ public class Editor extends JTextField implements KeyListener, Observer {
 	public Editor(Model model, CurrentSlotIndicator currentSlot, StatusLabel statusLabel) {
         this.model = model;
         this.currentSlot = currentSlot;
+        this.statusLabel = statusLabel;
 		setBackground(Color.WHITE);
         addKeyListener(this);
         currentSlot.addObserver(this);
@@ -35,6 +36,7 @@ public class Editor extends JTextField implements KeyListener, Observer {
 				currentSlot.getSlot().setText(model.valueString(currentSlot.getName()));
 				} catch(XLException exception) {
 					statusLabel.setText(exception.getMessage());
+					setText(model.toString(currentSlot.getName()));
 				}
 		}
 			
