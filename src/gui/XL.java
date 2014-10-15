@@ -70,6 +70,15 @@ public class XL extends JFrame implements Printable {
     	}
     	
     }
+    
+    public void save(String fileName){
+    	try {
+    		model.save(fileName);
+    	} catch (IOException e) {
+    		System.out.println("Save error: Can't save file");
+    	}
+    	
+    }
  
     public static void main(String[] args) {
         new XL(new XLList(), new XLCounter());
