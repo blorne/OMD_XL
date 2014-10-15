@@ -47,12 +47,14 @@ public class Model extends Observable implements Environment {
 	
 	
 	public void add(String name, String input) {
+		if(input.equals("")){
+			remove(name);
+		}else{
 		Slot slot = slotSelect.build(input);
-		if(map.get(name)==null){
 		circularCheck(name, slot);	
-		}
 		map.put(name, slot);
 		updateModel();
+		}
 	}
 	
 	private void circularCheck(String name, Slot slot){
