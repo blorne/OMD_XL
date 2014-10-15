@@ -25,4 +25,8 @@ public class CurrentSlotIndicator extends Observable{
 	public String getName() {
 		return slot.getPosition();
 	}
+	
+	public SlotLabel getSlot() {
+		return slot;
+	}
 }
