@@ -53,6 +53,7 @@ public class Editor extends JTextField implements KeyListener, Observer {
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		setText(model.toString(currentSlot.getName()));
+		statusLabel.clear();
 		
 	}
 }
