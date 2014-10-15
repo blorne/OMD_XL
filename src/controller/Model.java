@@ -13,7 +13,7 @@ public class Model extends Observable implements Environment {
 	private SlotSelector slotSelect;
 	
 	public Model(){
-		this.map = new HashMap<String, Slot>();
+		map = new HashMap<String, Slot>();
 		slotSelect = new SlotSelector();
 	}
 	
@@ -44,7 +44,10 @@ public class Model extends Observable implements Environment {
 	
 	public void fillSlot(String name, String input) {
 		Slot slot = slotSelect.build(input);
-		circularCheck(name, slot);
+		if(map.get(name)==null){
+		circularCheck(name, slot);	
+		}
+		map.put(name, slot);
 		updateModel();
 	}
 	
