@@ -1,22 +1,28 @@
 package gui;
 
 import java.awt.Color;
+import java.util.Observable;
 
-public class CurrentSlotIndicator {
-	SlotLabel slot;
+public class CurrentSlotIndicator extends Observable{
+	private SlotLabel slot;
 	
 	CurrentSlotIndicator() {
-		this.slot = null;
 	}
 	
 	public void setCurrentSlot(SlotLabel slot) {
 		this.slot = slot; 
-		this.slot.setBackground(Color.WHITE);
+		slot.setBackground(Color.YELLOW);
 	}
 	
 	public void changeCurrentTo(SlotLabel newSlot) {
-		this.slot.setBackground(Color.WHITE);
+		slot.setBackground(Color.WHITE);
 		newSlot.setBackground(Color.YELLOW);
-		this.slot = newSlot;
+		slot = newSlot;
+		setChanged();
+		notifyObservers();
+	}
+	
+	public String getName() {
+		return slot.getPosition();
 	}
 }

@@ -4,10 +4,12 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.JLabel;
 
-public class SlotLabel extends ColoredLabel implements MouseListener {
+public class SlotLabel extends ColoredLabel implements MouseListener, Observer {
     private String position;
     private CurrentSlotIndicator currentSlot;
 	
@@ -17,12 +19,15 @@ public class SlotLabel extends ColoredLabel implements MouseListener {
         this.position = position;
         this.currentSlot = currentSlot;
     }
+	
+	public String getPosition() {
+		return this.position;
+	}
 
 
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		this.currentSlot.changeCurrentTo(this);
-		
 	}
 
 
@@ -49,6 +54,13 @@ public class SlotLabel extends ColoredLabel implements MouseListener {
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void update(Observable arg0, Object arg1) {
 		// TODO Auto-generated method stub
 		
 	}
