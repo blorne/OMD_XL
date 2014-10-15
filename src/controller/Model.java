@@ -49,7 +49,6 @@ public class Model extends Observable implements Environment {
 	}
 	
 	private void circularCheck(String name, Slot slot){
-		
 		Slot temp = map.get(name);
 		ErrorSlot circularity = new ErrorSlot();
 		map.put(name, circularity);
