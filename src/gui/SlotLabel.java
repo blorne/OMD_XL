@@ -9,18 +9,19 @@ import javax.swing.JLabel;
 
 public class SlotLabel extends ColoredLabel implements MouseListener {
     private String position;
+    private CurrentSlotIndicator currentSlot;
 	
-	public SlotLabel(String position) {
+	public SlotLabel(String position, CurrentSlotIndicator currentSlot) {
         super("                    ", Color.WHITE, RIGHT);
         addMouseListener(this);
         this.position = position;
+        this.currentSlot = currentSlot;
     }
 
 
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
-		System.out.println("Hej");
-		super.setText(position);
+		this.currentSlot.changeCurrentTo(this);
 		
 	}
 
