@@ -33,7 +33,6 @@ public class Editor extends JTextField implements KeyListener, Observer {
 				String exp = getText();
 				model.add(currentSlot.getName(), exp);
 				setText(model.toString(currentSlot.getName()));
-				currentSlot.getSlot().setText(model.valueString(currentSlot.getName()));
 				} catch(XLException exception) {
 					statusLabel.setText(exception.getMessage());
 					setText(model.toString(currentSlot.getName()));

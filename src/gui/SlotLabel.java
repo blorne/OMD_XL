@@ -14,12 +14,15 @@ import controller.Model;
 public class SlotLabel extends ColoredLabel implements MouseListener, Observer {
     private String position;
     private CurrentSlotIndicator currentSlot;
+    private Model model;
 	
 	public SlotLabel(String position, CurrentSlotIndicator currentSlot, Model model) {
         super("                    ", Color.WHITE, RIGHT);
         addMouseListener(this);
         this.position = position;
         this.currentSlot = currentSlot;
+        this.model = model;
+        model.addObserver(this);
     }
 	
 	public String getPosition() {
@@ -63,7 +66,7 @@ public class SlotLabel extends ColoredLabel implements MouseListener, Observer {
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
-		// TODO Auto-generated method stub
+		this.setText(model.valueString(position));
 		
 	}
 
