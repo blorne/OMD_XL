@@ -9,6 +9,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.print.PageFormat;
 import java.awt.print.Printable;
+import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -20,6 +21,7 @@ public class XL extends JFrame implements Printable {
     private XLCounter counter;
     private StatusLabel statusLabel = new StatusLabel();
     private XLList xlList;
+    private Model model;
 
     public XL(XL oldXL) {
         this(oldXL.xlList, oldXL.counter);
@@ -31,10 +33,10 @@ public class XL extends JFrame implements Printable {
         this.counter = counter;
         xlList.add(this);
         counter.increment();
-        Model model = new Model();
+        model = new Model();
         CurrentSlotIndicator currentSlot = new CurrentSlotIndicator(); 
         JPanel statusPanel = new StatusPanel(statusLabel, currentSlot);
-        JPanel sheetPanel = new SheetPanel(ROWS, COLUMNS, currentSlot);
+        JPanel sheetPanel = new SheetPanel(ROWS, COLUMNS, currentSlot, model);
         Editor editor = new Editor(model, currentSlot, statusLabel);
         add(NORTH, statusPanel);
         add(CENTER, editor);
@@ -59,7 +61,16 @@ public class XL extends JFrame implements Printable {
         setTitle(title);
         xlList.setChanged();
     }
-
+    
+    public void load(String fileName){
+    	try {
+    		model.load(fileName);
+    	} catch (IOException e) {
+    		System.out.println("Read error: Can't load file");
+    	}
+    	
+    }
+ 
     public static void main(String[] args) {
         new XL(new XLList(), new XLCounter());
     }

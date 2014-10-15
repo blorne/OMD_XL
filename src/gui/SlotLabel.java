@@ -9,11 +9,13 @@ import java.util.Observer;
 
 import javax.swing.JLabel;
 
+import controller.Model;
+
 public class SlotLabel extends ColoredLabel implements MouseListener, Observer {
     private String position;
     private CurrentSlotIndicator currentSlot;
 	
-	public SlotLabel(String position, CurrentSlotIndicator currentSlot) {
+	public SlotLabel(String position, CurrentSlotIndicator currentSlot, Model model) {
         super("                    ", Color.WHITE, RIGHT);
         addMouseListener(this);
         this.position = position;
