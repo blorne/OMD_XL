@@ -29,8 +29,6 @@ public class SlotLabels extends GridPanel implements Observer {
                 labelList.add(label);
             }
         }
-        SlotLabel firstLabel = labelList.get(0);
-        currentSlot.setCurrentSlot(firstLabel);
     }
 
 	@Override

@@ -14,6 +14,6 @@ public class CurrentLabel extends ColoredLabel implements Observer {
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
-		setText(currentSlot.getName() + "=  ");		
+		setText(currentSlot.getPos() + "=  ");		
 	}
 }

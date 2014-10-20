@@ -31,11 +31,11 @@ public class Editor extends JTextField implements KeyListener, Observer {
 			case KeyEvent.VK_ENTER:
 				try {
 				String exp = getText();
-				model.add(currentSlot.getName(), exp);
-				setText(model.toString(currentSlot.getName()));
+				model.add(currentSlot.getPos(), exp);
+				setText(model.toString(currentSlot.getPos()));
 				} catch(XLException exception) {
 					statusLabel.setText(exception.getMessage());
-					setText(model.toString(currentSlot.getName()));
+					setText(model.toString(currentSlot.getPos()));
 				}
 		}
 			
@@ -51,7 +51,7 @@ public class Editor extends JTextField implements KeyListener, Observer {
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
-		setText(model.toString(currentSlot.getName()));
+		setText(model.toString(currentSlot.getPos()));
 		statusLabel.clear();
 		
 	}

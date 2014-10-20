@@ -4,29 +4,18 @@ import java.awt.Color;
 import java.util.Observable;
 
 public class CurrentSlotIndicator extends Observable{
-	private SlotLabel slot;
+	String pos;
 	
 	CurrentSlotIndicator() {
 	}
 	
-	public void setCurrentSlot(SlotLabel slot) {
-		this.slot = slot; 
-		slot.setBackground(Color.YELLOW);
-	}
-	
-	public void changeCurrentTo(SlotLabel newSlot) {
-		slot.setBackground(Color.WHITE);
-		newSlot.setBackground(Color.YELLOW);
-		slot = newSlot;
+	public void changeCurrentTo(String pos) {
+		this.pos = pos;
 		setChanged();
 		notifyObservers();
 	}
 	
-	public String getName() {
-		return slot.getPosition();
-	}
-	
-	public SlotLabel getSlot() {
-		return slot;
+	public String getPos() {
+		return pos;
 	}
 }

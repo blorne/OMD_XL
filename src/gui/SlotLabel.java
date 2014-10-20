@@ -32,7 +32,8 @@ public class SlotLabel extends ColoredLabel implements MouseListener, Observer {
 
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
-		this.currentSlot.changeCurrentTo(this);
+		currentSlot.addObserver(this);
+		currentSlot.changeCurrentTo(position);
 	}
 
 
@@ -66,7 +67,14 @@ public class SlotLabel extends ColoredLabel implements MouseListener, Observer {
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
-		this.setText(model.valueString(position));
+		setText(model.valueString(position));
+		
+		if (currentSlot.getPos().equals(position))
+			setBackground(Color.YELLOW);
+		else {
+			setBackground(Color.WHITE);
+			currentSlot.deleteObserver(this);
+		}
 		
 	}
 
